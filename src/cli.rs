@@ -1,7 +1,7 @@
 //! https://docs.rs/clap/latest/clap/
 
 use clap::{ArgAction, Args, CommandFactory, Parser, Subcommand};
-use log::{trace, LevelFilter};
+use log::LevelFilter;
 
 use crate::mappings::*;
 // The subcommand handler.

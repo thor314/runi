@@ -1,6 +1,5 @@
 use anyhow::{anyhow, Context};
 use clap::Parser;
-use log::trace;
 
 use crate::{cli::MyCli, error::MyError};
 /// Set up crate logging and environment variables.
