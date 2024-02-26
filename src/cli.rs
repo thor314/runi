@@ -10,7 +10,7 @@ use log::{trace, LevelFilter};
 #[derive(Parser, Debug)]
 #[command(name = "runi")]
 #[command(bin_name = "runi")]
-#[clap(about = "runi cli")]
+#[clap(about = "a CLI tool to generate unicode fonts")]
 #[command(author, version)]
 #[command(propagate_version = true)]
 pub struct MyCli {

@@ -14,6 +14,7 @@ use log::info;
 
 fn main() -> Result<(), MyError> {
   let _cli = utils::setup()?;
+  _cli.handle();
 
   info!("hello thor");
 
