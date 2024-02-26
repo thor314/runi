@@ -16,25 +16,35 @@ use crate::mappings::*;
 #[command(propagate_version = true)]
 pub struct MyCli {
   #[command(subcommand)]
-  subcommands:   Subcommands,
+  subcommands:   Option<Subcommands>,
   /// Set the verbosity. Use -v for DEBUG, -vv for TRACE. None for INFO.
   #[arg(long = "verbose", short = 'v', action = ArgAction::Count)]
   pub verbosity: u8,
   /// Generate shell completions, using doc strings for subcommand hints
-  #[arg(short = 'g', long = "generate", value_enum)]
+  #[arg(short = 'c', long = "completions", value_enum)]
   generator:     Option<clap_complete::Shell>,
 }
 
 impl MyCli {
   pub fn handle(&self) {
-    if let Some(generator) = self.generator {
+    if let Some(generator) = &self.generator {
       let mut cmd = Self::command();
       eprintln!("Generating completion file for {generator:?}...");
-      Self::print_completions(generator, &mut cmd);
+      Self::print_completions(*generator, &mut cmd);
       return;
     }
 
-    self.subcommands.handle();
+    if let Some(subcommands) = &self.subcommands {
+      subcommands.handle();
+    } else {
+      // todo: doesn't look like we can tell clap to print help?
+      eprintln!(
+        "Usage: runi [OPTIONS] <COMMAND>
+
+For more information, try '--help'."
+      );
+      std::process::exit(1)
+    }
   }
 
   fn print_completions<G: clap_complete::Generator>(gen: G, cmd: &mut clap::Command) {
@@ -64,34 +74,79 @@ impl MyCli {
 /// Add subcommands as demonstrated.
 #[derive(Debug, Subcommand)]
 enum Subcommands {
-  Superscript { s: String },
-  Subscript { s: String },
-  Script { s: String },
-  ScriptBold { s: String },
-  Fullwidth { s: String },
-  Gothic { s: String },
-  GothicBold { s: String },
-  Sans { s: String },
-  SansItalic { s: String },
-  Monospace { s: String },
-  SansBold { s: String },
-  SansBoldItalic { s: String },
-  SerifBold { s: String },
-  SmallCaps { s: String },
-  Circled { s: String },
-  CircledNegative { s: String },
-  Squared { s: String },
-  SquaredNegative { s: String },
-  DoubleStruck { s: String },
-  Inverted { s: String },
-  Reversed { s: String },
-  FauxCyrillic { s: String },
+  Superscript {
+    s: String,
+  },
+  Subscript {
+    s: String,
+  },
+  Script {
+    s: String,
+  },
+  ScriptBold {
+    s: String,
+  },
+  Fullwidth {
+    s: String,
+  },
+  Gothic {
+    s: String,
+  },
+  GothicBold {
+    s: String,
+  },
+  Sans {
+    s: String,
+  },
+  SansItalic {
+    s: String,
+  },
+  Monospace {
+    s: String,
+  },
+  SansBold {
+    s: String,
+  },
+  SansBoldItalic {
+    s: String,
+  },
+  SerifBold {
+    s: String,
+  },
+  SmallCaps {
+    s: String,
+  },
+  Circled {
+    s: String,
+  },
+  CircledNegative {
+    s: String,
+  },
+  Squared {
+    s: String,
+  },
+  SquaredNegative {
+    s: String,
+  },
+  DoubleStruck {
+    s: String,
+  },
+  Inverted {
+    s: String,
+  },
+  Reversed {
+    s: String,
+  },
+  FauxCyrillic {
+    s: String,
+  },
 }
 
 impl Subcommands {
   /// delegate handling to each subcommand
   pub fn handle(&self) -> String {
     trace!("handling subcommands...");
+
     let s: String = match self {
       Subcommands::Superscript { s } =>
         s.chars().filter_map(|c| SUPERSCRIPT.get(&c).copied()).collect::<String>(),

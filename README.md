@@ -16,8 +16,6 @@
   <a href="https://crates.io/crates/runi">
     <img src="https://img.shields.io/crates/v/runi.svg" />
   </a>
-  <!-- [![crates.io](https://img.shields.io/crates/v/runi.svg)](https://crates.io/crates/runi) -->
-  <!-- [![Documentation](https://docs.rs/runi/badge.svg)](https://docs.rs/runi) -->
   </div>
 
 `runi` is a portmanteau of Rust and Unicode. It allows you to generate unicode-fonts, instead of having to visit websites like https://lingojam.com.
@@ -59,8 +57,10 @@ $ runi double-struck abcdefghijklmnopqrstuvwxyz\\
 ```
 
 ## Generate shell completions for your shell:
+Generate completions for your shell. Choices are: bash, elvish, fish, powershell, zsh.
+
 ```sh
-runi -g $SHELL > runi_completions.sh
+runi --completions $YOUR_SHELL > runi_completions.sh
 source runi_completions.sh
 ```
 
