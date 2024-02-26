@@ -74,72 +74,28 @@ For more information, try '--help'."
 /// Add subcommands as demonstrated.
 #[derive(Debug, Subcommand)]
 enum Subcommands {
-  Superscript {
-    s: String,
-  },
-  Subscript {
-    s: String,
-  },
-  Script {
-    s: String,
-  },
-  ScriptBold {
-    s: String,
-  },
-  Fullwidth {
-    s: String,
-  },
-  Gothic {
-    s: String,
-  },
-  GothicBold {
-    s: String,
-  },
-  Sans {
-    s: String,
-  },
-  SansItalic {
-    s: String,
-  },
-  Monospace {
-    s: String,
-  },
-  SansBold {
-    s: String,
-  },
-  SansBoldItalic {
-    s: String,
-  },
-  SerifBold {
-    s: String,
-  },
-  SmallCaps {
-    s: String,
-  },
-  Circled {
-    s: String,
-  },
-  CircledNegative {
-    s: String,
-  },
-  Squared {
-    s: String,
-  },
-  SquaredNegative {
-    s: String,
-  },
-  DoubleStruck {
-    s: String,
-  },
-  Inverted {
-    s: String,
-  },
-  Reversed {
-    s: String,
-  },
-  FauxCyrillic {
-    s: String,
-  },
+  Superscript { s: String },
+  Subscript { s: String },
+  Script { s: String },
+  ScriptBold { s: String },
+  Fullwidth { s: String },
+  Gothic { s: String },
+  GothicBold { s: String },
+  Sans { s: String },
+  SansItalic { s: String },
+  Monospace { s: String },
+  SansBold { s: String },
+  SansBoldItalic { s: String },
+  SerifBold { s: String },
+  SmallCaps { s: String },
+  Circled { s: String },
+  CircledNegative { s: String },
+  Squared { s: String },
+  SquaredNegative { s: String },
+  DoubleStruck { s: String },
+  Inverted { s: String },
+  Reversed { s: String },
+  FauxCyrillic { s: String },
 }
 
 impl Subcommands {
