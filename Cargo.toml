@@ -5,7 +5,9 @@ edition    ="2021"
 license    ="MIT"
 name       ="runi"
 repository ="https://github.com/thor314/runi"
-version    ="0.1.0"
+version    ="0.1.1"
+readme     ="README.md"
+keywords   =["cli", "unicode", "font", "generator"]
 
 [dependencies]
 anyhow   ="1.0"
