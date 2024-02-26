@@ -13,6 +13,9 @@
   <a href="https://github.com/thor314/runi/actions">
     <img src="https://github.com/thor314/runi/actions/workflows/ci.yml/badge.svg" />
   </a>
+  <a href="https://crates.io/crates/runi">
+    <img src="https://img.shields.io/crates/v/runi.svg" />
+  </a>
   <!-- [![crates.io](https://img.shields.io/crates/v/runi.svg)](https://crates.io/crates/runi) -->
   <!-- [![Documentation](https://docs.rs/runi/badge.svg)](https://docs.rs/runi) -->
   </div>
@@ -59,6 +62,13 @@ $ runi double-struck abcdefghijklmnopqrstuvwxyz\\
 ```sh
 runi -g $SHELL > runi_completions.sh
 source runi_completions.sh
+```
+
+## Install
+```sh
+cargo install runi
+# or if you have cargo-binstall, even faster https://github.com/cargo-bins/cargo-binstall
+cargo binstall runi
 ```
 
 ## License
