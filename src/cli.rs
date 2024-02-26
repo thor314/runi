@@ -22,15 +22,15 @@ pub struct MyCli {
   pub verbosity: u8,
   /// Generate shell completions, using doc strings for subcommand hints
   #[arg(short = 'c', long = "completions", value_enum)]
-  generator:     Option<clap_complete::Shell>,
+  completions:   Option<clap_complete::Shell>,
 }
 
 impl MyCli {
   pub fn handle(&self) {
-    if let Some(generator) = &self.generator {
+    if let Some(completions) = &self.completions {
       let mut cmd = Self::command();
-      eprintln!("Generating completion file for {generator:?}...");
-      Self::print_completions(*generator, &mut cmd);
+      eprintln!("Generating completion file for {completions:?}...");
+      Self::print_completions(*completions, &mut cmd);
       return;
     }
 

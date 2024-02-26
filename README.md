@@ -49,8 +49,6 @@ This might be useful if you work with mathematical formulas or just enjoy using 
 ## Usage
 Provide any of the subcommands listed above, and any string:
 
-Or:
-
 ```sh
 $ runi double-struck abcdefghijklmnopqrstuvwxyz\\
 𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫
