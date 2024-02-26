@@ -7,17 +7,16 @@
 
 mod cli;
 mod error;
+mod mappings;
 #[cfg(test)] mod tests;
 mod utils;
-mod mappings;
+
 use error::MyError;
 use log::info;
 
 fn main() -> Result<(), MyError> {
-  let _cli = utils::setup()?;
-  _cli.handle();
-
-  info!("hello thor");
+  let my_cli = utils::setup()?;
+  my_cli.handle();
 
   Ok(())
 }

@@ -1,8 +1,10 @@
 use std::collections::HashMap;
+
 use lazy_static::lazy_static;
 
 lazy_static! {
-static ref   SUPERSCRIPT: HashMap<char,char> = { let mut m = HashMap::new(); 
+  pub static ref SUPERSCRIPT: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ᵃ');
     m.insert('b', 'ᵇ');
     m.insert('c', 'ᶜ');
@@ -65,9 +67,10 @@ static ref   SUPERSCRIPT: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '⁷');
     m.insert('8', '⁸');
     m.insert('9', '⁹');
-  m };
-
-static ref   SUBSCRIPT: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SUBSCRIPT: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ₐ');
     m.insert('b', 'b');
     m.insert('c', 'c');
@@ -130,9 +133,10 @@ static ref   SUBSCRIPT: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '₇');
     m.insert('8', '₈');
     m.insert('9', '₉');
-  m };
-
-static ref   SCRIPT: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SCRIPT: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝒶');
     m.insert('b', '𝒷');
     m.insert('c', '𝒸');
@@ -185,9 +189,10 @@ static ref   SCRIPT: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', '𝒳');
     m.insert('Y', '𝒴');
     m.insert('Z', '𝒵');
-  m };
-
-static ref   SCRIPT_BOLD: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SCRIPT_BOLD: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝓪');
     m.insert('b', '𝓫');
     m.insert('c', '𝓬');
@@ -250,9 +255,10 @@ static ref   SCRIPT_BOLD: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '𝟕');
     m.insert('8', '𝟖');
     m.insert('9', '𝟗');
-  m };
-
-static ref   FULLWIDTH: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref FULLWIDTH: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ａ');
     m.insert('b', 'ｂ');
     m.insert('c', 'ｃ');
@@ -344,9 +350,10 @@ static ref   FULLWIDTH: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('"', '"');
     m.insert('`', '｀');
     m.insert('~', '～');
-  m };
-
-static ref   GOTHIC: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref GOTHIC: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝔞');
     m.insert('b', '𝔟');
     m.insert('c', '𝔠');
@@ -399,9 +406,10 @@ static ref   GOTHIC: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', '𝔛');
     m.insert('Y', '𝔜');
     m.insert('Z', 'ℨ');
-  m };
-
-static ref   GOTHIC_BOLD: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref GOTHIC_BOLD: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝖆');
     m.insert('b', '𝖇');
     m.insert('c', '𝖈');
@@ -454,9 +462,10 @@ static ref   GOTHIC_BOLD: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', '𝖃');
     m.insert('Y', '𝖄');
     m.insert('Z', '𝖅');
-  m };
-
-static ref   SANS: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SANS: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝖺');
     m.insert('b', '𝖻');
     m.insert('c', '𝖼');
@@ -547,9 +556,10 @@ static ref   SANS: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('+', '+');
     m.insert('`', '`');
     m.insert('~', '~');
-  m };
-
-static ref   SANS_ITALIC: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SANS_ITALIC: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝘢');
     m.insert('b', '𝘣');
     m.insert('c', '𝘤');
@@ -602,9 +612,10 @@ static ref   SANS_ITALIC: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', '𝘟');
     m.insert('Y', '𝘠');
     m.insert('Z', '𝘡');
-  m };
-
-static ref   MONOSPACE: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref MONOSPACE: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝚊');
     m.insert('b', '𝚋');
     m.insert('c', '𝚌');
@@ -667,9 +678,10 @@ static ref   MONOSPACE: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '𝟽');
     m.insert('8', '𝟾');
     m.insert('9', '𝟿');
-  m };
-
-static ref   SANS_BOLD: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SANS_BOLD: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝗮');
     m.insert('b', '𝗯');
     m.insert('c', '𝗰');
@@ -732,9 +744,10 @@ static ref   SANS_BOLD: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '𝟳');
     m.insert('8', '𝟴');
     m.insert('9', '𝟵');
-  m };
-
-static ref   SANS_BOLD_ITALIC: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SANS_BOLD_ITALIC: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝙖');
     m.insert('b', '𝙗');
     m.insert('c', '𝙘');
@@ -787,9 +800,10 @@ static ref   SANS_BOLD_ITALIC: HashMap<char,char> = { let mut m = HashMap::new()
     m.insert('X', '𝙓');
     m.insert('Y', '𝙔');
     m.insert('Z', '𝙕');
-  m };
-
-static ref   SERIF_BOLD: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SERIF_BOLD: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝐚');
     m.insert('b', '𝐛');
     m.insert('c', '𝐜');
@@ -852,9 +866,10 @@ static ref   SERIF_BOLD: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '𝟕');
     m.insert('8', '𝟖');
     m.insert('9', '𝟗');
-  m };
-
-static ref   SMALL_CAPS: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SMALL_CAPS: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ᴀ');
     m.insert('b', 'ʙ');
     m.insert('c', 'ᴄ');
@@ -907,9 +922,10 @@ static ref   SMALL_CAPS: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', 'x');
     m.insert('Y', 'ʏ');
     m.insert('Z', 'ᴢ');
-  m };
-
-static ref   CIRCLED: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref CIRCLED: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ⓐ');
     m.insert('b', 'ⓑ');
     m.insert('c', 'ⓒ');
@@ -981,9 +997,10 @@ static ref   CIRCLED: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('>', '⧁');
     m.insert('/', '⊘');
     m.insert('\\', '⦸');
-  m };
-
-static ref   CIRCLED_NEGATIVE: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref CIRCLED_NEGATIVE: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '🅐');
     m.insert('b', '🅑');
     m.insert('c', '🅒');
@@ -1046,9 +1063,10 @@ static ref   CIRCLED_NEGATIVE: HashMap<char,char> = { let mut m = HashMap::new()
     m.insert('7', '➐');
     m.insert('8', '➑');
     m.insert('9', '➒');
-  m };
-
-static ref   SQUARED: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SQUARED: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '🄰');
     m.insert('b', '🄱');
     m.insert('c', '🄲');
@@ -1107,9 +1125,10 @@ static ref   SQUARED: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('-', '⊟');
     m.insert('/', '⧄');
     m.insert('\\', '⧅');
-  m };
-
-static ref   SQUARED_NEGATIVE: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref SQUARED_NEGATIVE: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '🅰');
     m.insert('b', '🅱');
     m.insert('c', '🅲');
@@ -1162,9 +1181,10 @@ static ref   SQUARED_NEGATIVE: HashMap<char,char> = { let mut m = HashMap::new()
     m.insert('X', '🆇');
     m.insert('Y', '🆈');
     m.insert('Z', '🆉');
-  m };
-
-static ref   DOUBLE_STRUCK: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref DOUBLE_STRUCK: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', '𝕒');
     m.insert('b', '𝕓');
     m.insert('c', '𝕔');
@@ -1227,9 +1247,10 @@ static ref   DOUBLE_STRUCK: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('7', '𝟟');
     m.insert('8', '𝟠');
     m.insert('9', '𝟡');
-  m };
-
-static ref   INVERTED: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref INVERTED: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'ɐ');
     m.insert('b', 'q');
     m.insert('c', 'ɔ');
@@ -1294,9 +1315,10 @@ static ref   INVERTED: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('/', '\\');
     m.insert('\\', '/');
     m.insert('~', '∽');
-  m };
-
-static ref   REVERSED: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref REVERSED: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'A');
     m.insert('b', 'd');
     m.insert('c', 'ↄ');
@@ -1388,9 +1410,10 @@ static ref   REVERSED: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('+', '+');
     m.insert('`', '`');
     m.insert('~', '∽');
-  m };
-
-static ref   FAUX_CYRILLIC: HashMap<char,char> = { let mut m = HashMap::new(); 
+    m
+  };
+  pub static ref FAUX_CYRILLIC: HashMap<char, char> = {
+    let mut m = HashMap::new();
     m.insert('a', 'а');
     m.insert('b', 'ъ');
     m.insert('c', 'с');
@@ -1443,5 +1466,7 @@ static ref   FAUX_CYRILLIC: HashMap<char,char> = { let mut m = HashMap::new();
     m.insert('X', 'Ж');
     m.insert('Y', 'Ч');
     m.insert('Z', 'Z');
-  m };
+    m
+  };
 }
+// }

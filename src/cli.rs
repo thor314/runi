@@ -2,6 +2,8 @@
 
 use clap::{ArgAction, Args, CommandFactory, Parser, Subcommand};
 use log::{trace, LevelFilter};
+
+use crate::mappings::*;
 /// The subcommand handler.
 /// If no subcommand is provided, the handler will short to the logic for the default command.
 ///
@@ -68,37 +70,81 @@ impl MyCli {
 /// Add subcommands as demonstrated.
 #[derive(Debug, Subcommand)]
 enum Subcommands {
-  SayHello(SayHello),
+  Superscript { s: String },
+  Subscript { s: String },
+  Script { s: String },
+  ScriptBold { s: String },
+  Fullwidth { s: String },
+  Gothic { s: String },
+  GothicBold { s: String },
+  Sans { s: String },
+  SansItalic { s: String },
+  Monospace { s: String },
+  SansBold { s: String },
+  SansBoldItalic { s: String },
+  SerifBold { s: String },
+  SmallCaps { s: String },
+  Circled { s: String },
+  CircledNegative { s: String },
+  Squared { s: String },
+  SquaredNegative { s: String },
+  DoubleStruck { s: String },
+  Inverted { s: String },
+  Reversed { s: String },
+  FauxCyrillic { s: String },
 }
 
 impl Subcommands {
   /// delegate handling to each subcommand
   pub fn handle(&self) {
     trace!("handling subcommands...");
-    match self {
-      Subcommands::SayHello(c) => c.handle(),
-    }
-  }
-}
+    let s: String = match self {
+      Subcommands::Superscript { s } =>
+        s.chars().filter_map(|c| SUPERSCRIPT.get(&c).copied()).collect::<String>(),
+      Subcommands::Subscript { s } =>
+        s.chars().filter_map(|c| SUBSCRIPT.get(&c).copied()).collect::<String>(),
+      Subcommands::Script { s } =>
+        s.chars().filter_map(|c| SCRIPT.get(&c).copied()).collect::<String>(),
+      Subcommands::ScriptBold { s } =>
+        s.chars().filter_map(|c| SCRIPT_BOLD.get(&c).copied()).collect::<String>(),
+      Subcommands::Fullwidth { s } =>
+        s.chars().filter_map(|c| FULLWIDTH.get(&c).copied()).collect::<String>(),
+      Subcommands::Gothic { s } =>
+        s.chars().filter_map(|c| GOTHIC.get(&c).copied()).collect::<String>(),
+      Subcommands::GothicBold { s } =>
+        s.chars().filter_map(|c| GOTHIC_BOLD.get(&c).copied()).collect::<String>(),
+      Subcommands::Sans { s } =>
+        s.chars().filter_map(|c| SANS.get(&c).copied()).collect::<String>(),
+      Subcommands::SansItalic { s } =>
+        s.chars().filter_map(|c| SANS_ITALIC.get(&c).copied()).collect::<String>(),
+      Subcommands::Monospace { s } =>
+        s.chars().filter_map(|c| MONOSPACE.get(&c).copied()).collect::<String>(),
+      Subcommands::SansBold { s } =>
+        s.chars().filter_map(|c| SANS_BOLD.get(&c).copied()).collect::<String>(),
+      Subcommands::SansBoldItalic { s } =>
+        s.chars().filter_map(|c| SANS_BOLD_ITALIC.get(&c).copied()).collect::<String>(),
+      Subcommands::SerifBold { s } =>
+        s.chars().filter_map(|c| SERIF_BOLD.get(&c).copied()).collect::<String>(),
+      Subcommands::SmallCaps { s } =>
+        s.chars().filter_map(|c| SMALL_CAPS.get(&c).copied()).collect::<String>(),
+      Subcommands::Circled { s } =>
+        s.chars().filter_map(|c| CIRCLED.get(&c).copied()).collect::<String>(),
+      Subcommands::CircledNegative { s } =>
+        s.chars().filter_map(|c| CIRCLED_NEGATIVE.get(&c).copied()).collect::<String>(),
+      Subcommands::Squared { s } =>
+        s.chars().filter_map(|c| SQUARED.get(&c).copied()).collect::<String>(),
+      Subcommands::SquaredNegative { s } =>
+        s.chars().filter_map(|c| SQUARED_NEGATIVE.get(&c).copied()).collect::<String>(),
+      Subcommands::DoubleStruck { s } =>
+        s.chars().filter_map(|c| DOUBLE_STRUCK.get(&c).copied()).collect::<String>(),
+      Subcommands::Inverted { s } =>
+        s.chars().filter_map(|c| INVERTED.get(&c).copied()).collect::<String>(),
+      Subcommands::Reversed { s } =>
+        s.chars().filter_map(|c| REVERSED.get(&c).copied()).collect::<String>(),
+      Subcommands::FauxCyrillic { s } =>
+        s.chars().filter_map(|c| FAUX_CYRILLIC.get(&c).copied()).collect::<String>(),
+    };
 
-// test with:
-// cargo run -- say-hello --hello
-/// An example subcommand
-#[derive(Parser, Debug)]
-struct SayHello {
-  /// example
-  // note ValueHint + Parser for basic suggestion parsing
-  // https://github.com/clap-rs/clap/blob/master/clap_complete/examples/completion-derive.rs#L38
-  // https://docs.rs/clap/latest/clap/enum.ValueHint.html ; eg:
-  // https://docs.rs/clap/latest/clap/macro.value_parser.html
-  #[arg(long = "hello")]
-  pub hello_world: bool,
-}
-
-impl SayHello {
-  pub fn handle(&self) {
-    if self.hello_world {
-      println!("hello world!");
-    }
+    println!("{}", s);
   }
 }
