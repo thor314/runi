@@ -2,7 +2,7 @@
 authors    =["Thor Kampefner <thorck@pm.me>"]
 description="""a CLI tool to generate unicode fonts"""
 edition    ="2021"
-license    ="Apache2.0 OR MIT"
+license    ="MIT"
 name       ="runi"
 repository ="https://github.com/thor314/runi"
 version    ="0.1.0"
