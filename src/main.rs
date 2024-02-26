@@ -5,7 +5,7 @@
 #![allow(non_snake_case)]
 #![allow(clippy::clone_on_copy)]
 
-mod cli;
+pub mod cli;
 mod error;
 mod mappings;
 mod utils;

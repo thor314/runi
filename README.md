@@ -45,6 +45,22 @@ faux-cyrillic:     аъсdэfБЂіјкlмиорqѓѕтцvшхЎz
 
 This might be useful if you work with mathematical formulas or just enjoy using alternate unicode text font styles.
 
+## Usage
+Provide any of the subcommands listed above, and any string:
+
+Or:
+
+```sh
+$ runi double-struck abcdefghijklmnopqrstuvwxyz\\
+𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫
+```
+
+## Generate shell completions for your shell:
+```sh
+runi -g $SHELL > runi_completions.sh
+source runi_completions.sh
+```
+
 ## License
 Licensed under your option of either:
 - Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
