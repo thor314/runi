@@ -4,11 +4,10 @@ use clap::{ArgAction, Args, CommandFactory, Parser, Subcommand};
 use log::{trace, LevelFilter};
 
 use crate::mappings::*;
-/// The subcommand handler.
-/// If no subcommand is provided, the handler will short to the logic for the default command.
-///
-/// This struct probably doesn't need to change, make changes to `Subcommands` and the individual
-/// subcommands instead.
+// The subcommand handler.
+// If no subcommand is provided, the handler will short to the logic for the default command.
+// This struct probably doesn't need to change, make changes to `Subcommands` and the individual
+// subcommands instead.
 #[derive(Parser, Debug)]
 #[command(name = "runi")]
 #[command(bin_name = "runi")]
@@ -17,7 +16,7 @@ use crate::mappings::*;
 #[command(propagate_version = true)]
 pub struct MyCli {
   #[command(subcommand)]
-  subcommands:   Option<Subcommands>,
+  subcommands:   Subcommands,
   /// Set the verbosity. Use -v for DEBUG, -vv for TRACE. None for INFO.
   #[arg(long = "verbose", short = 'v', action = ArgAction::Count)]
   pub verbosity: u8,
@@ -31,17 +30,15 @@ impl MyCli {
     if let Some(generator) = self.generator {
       let mut cmd = Self::command();
       eprintln!("Generating completion file for {generator:?}...");
-      print_completions(generator, &mut cmd);
+      Self::print_completions(generator, &mut cmd);
+      return;
     }
 
-    match &self.subcommands {
-      Some(subcommands) => subcommands.handle(),
-      None => self.handle_default(),
-    }
+    self.subcommands.handle();
+  }
 
-    fn print_completions<G: clap_complete::Generator>(gen: G, cmd: &mut clap::Command) {
-      clap_complete::generate(gen, cmd, cmd.get_name().to_string(), &mut std::io::stdout());
-    }
+  fn print_completions<G: clap_complete::Generator>(gen: G, cmd: &mut clap::Command) {
+    clap_complete::generate(gen, cmd, cmd.get_name().to_string(), &mut std::io::stdout());
   }
 
   /// in decreasing order of priority:
@@ -60,9 +57,6 @@ impl MyCli {
       LevelFilter::Info
     }
   }
-
-  /// The default command: what to do if no subcommand is provided
-  fn handle_default(&self) { trace!("handle default") }
 }
 
 /// CLI parser with subcommands
@@ -96,7 +90,7 @@ enum Subcommands {
 
 impl Subcommands {
   /// delegate handling to each subcommand
-  pub fn handle(&self) {
+  pub fn handle(&self) -> String {
     trace!("handling subcommands...");
     let s: String = match self {
       Subcommands::Superscript { s } =>
@@ -146,5 +140,27 @@ impl Subcommands {
     };
 
     println!("{}", s);
+    s
+  }
+}
+
+/// delegate handling to each subcommand
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn test_handle() {
+    let subcommand = Subcommands::Superscript { s: String::from("Hello") };
+    let my_cli = MyCli { subcommands: subcommand, verbosity: 0, generator: None };
+
+    // my_cli.handle();
+    let input = "test"; // Example input
+    let expected = "ᵗᵉˢᵗ";
+
+    let command = Subcommands::Superscript { s: input.into() };
+    let result = command.handle(); // Ensure `handle` returns the transformed string instead of printing it
+
+    assert_eq!(result, expected, "Superscript transformation failed");
   }
 }

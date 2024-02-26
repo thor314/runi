@@ -8,7 +8,6 @@
 mod cli;
 mod error;
 mod mappings;
-#[cfg(test)] mod tests;
 mod utils;
 
 use error::MyError;
