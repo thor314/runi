@@ -9,6 +9,7 @@ mod cli;
 mod error;
 #[cfg(test)] mod tests;
 mod utils;
+mod mappings;
 use error::MyError;
 use log::info;
 
