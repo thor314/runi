@@ -1,7 +1,7 @@
 //! https://docs.rs/clap/latest/clap/
 
-use clap::{ArgAction, Args, CommandFactory, Parser, Subcommand};
-use log::LevelFilter;
+use clap::{ArgAction, CommandFactory, Parser, Subcommand};
+use log::{trace, LevelFilter};
 
 use crate::mappings::*;
 // The subcommand handler.
@@ -151,10 +151,6 @@ mod tests {
 
   #[test]
   fn test_handle() {
-    let subcommand = Subcommands::Superscript { s: String::from("Hello") };
-    let my_cli = MyCli { subcommands: subcommand, verbosity: 0, generator: None };
-
-    // my_cli.handle();
     let input = "test"; // Example input
     let expected = "ᵗᵉˢᵗ";
 
